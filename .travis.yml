@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "4.1"
+install:
+  - npm install hexo-cli -g
+  - npm install hexo --save
+  - npm install
+script:
+  - chmod +x ./build.sh
+  - ./build.sh #> /dev/null
+branches:
+  only:
+    - july
