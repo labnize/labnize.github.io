@@ -62,8 +62,8 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: http://hexo.io/plugins/
-## Themes: http://hexo.io/themes/
-theme: tranquilpeak
+## Themes: http://hexo.io/themes/s
+theme: landscape
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
