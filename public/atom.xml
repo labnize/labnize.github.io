@@ -4,7 +4,7 @@
   <subtitle><![CDATA[July Zhu]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-01-18T12:41:08.000Z</updated>
+  <updated>2016-01-20T03:00:45.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[hexo安装插件]]></title>
+    <link href="http://yoursite.com/2016/01/20/hexo-plugins/"/>
+    <id>http://yoursite.com/2016/01/20/hexo-plugins/</id>
+    <published>2016-01-20T02:48:27.000Z</published>
+    <updated>2016-01-20T03:00:45.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="sitemap_u63D2_u4EF6"><a href="#sitemap_u63D2_u4EF6" class="headerlink" title="sitemap插件"></a>sitemap插件</h2><ol>
+<li>可以将你站点地图提交给搜索引擎，文件路径public/sitemap.xml；</li>
+<li><p>安装</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm <span class="operator"><span class="keyword">install</span> hexo-generator-sitemap <span class="comment">--save</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用，修改Hexo/_config.yml，增加以下内容</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Extensions</span></span><br><span class="line"><span class="label">Plugins:</span></span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line"><span class="preprocessor">#sitemap</span></span><br><span class="line"><span class="label">sitemap:</span></span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用方法<br>(1) 访问 <a href="http://localhost:4000/sitemap.xml，即可看到站点地图。" target="_blank" rel="external">http://localhost:4000/sitemap.xml，即可看到站点地图。</a><br>(2) 将它显示在页面中<br> 修改themes/landscape下的_config.yml，在menu节点下添加下面的内容：</p>
+ <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">menu:</span></span><br><span class="line"><span class="label">Home:</span> /</span><br><span class="line"><span class="label">Archives:</span> /archives</span><br><span class="line"><span class="label">Rss:</span> /atom.xml</span><br><span class="line"><span class="label">Sitemap:</span> /sitemap.xml</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="feed_u63D2_u4EF6"><a href="#feed_u63D2_u4EF6" class="headerlink" title="feed插件"></a>feed插件</h2><ol>
+<li>Rss的生成插件，你可以在配置显示你站点的Rss，文件路径public/atom.xml；</li>
+<li><p>安装</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm <span class="operator"><span class="keyword">install</span> hexo-generator-feed <span class="comment">--save</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用，修改Hexo/_config.yml，增加以下内容</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line">Plugins:</span><br><span class="line">- hexo-generator-feed</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line"><span class="comment">#Feed Atom</span></span><br><span class="line">feed:</span><br><span class="line">  <span class="operator">type</span>: atom</span><br><span class="line">  path: atom.<span class="keyword">xml</span></span><br><span class="line">  <span class="title">limit</span>: <span class="number">20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用方法参加sitemap插件部分。</p>
+</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="sitemap_u63D2_u4EF6"><a href="#sitemap_u63D2_u4EF6" class="headerlink" title="sitemap插件"></a>sitemap插件</h2><ol>
+<li>可以将你站点地图提交给搜索引擎，]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[landscape主题添加多说评论框]]></title>
+    <link href="http://yoursite.com/2016/01/20/duoshuo/"/>
+    <id>http://yoursite.com/2016/01/20/duoshuo/</id>
+    <published>2016-01-20T02:33:12.000Z</published>
+    <updated>2016-01-20T02:46:25.000Z</updated>
+    <content type="html"><![CDATA[<p>登录多说，点击工具，获得如下代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 多说评论框 start --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-thread-key</span>=<span class="value">"请将此处替换成文章在你的站点中的ID"</span> <span class="attribute">data-title</span>=<span class="value">"请替换成文章的标题"</span> <span class="attribute">data-url</span>=<span class="value">"请替换成文章的网址"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">"labnize"</span>&#125;;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> ds = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">		ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;</span><br><span class="line">		ds.src = (<span class="built_in">document</span>.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</span><br><span class="line">		ds.charset = <span class="string">'UTF-8'</span>;</span><br><span class="line">		(<span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] </span><br><span class="line">		 || <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);</span><br><span class="line">	&#125;)();</span><br><span class="line">	</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>将landscape/layout/_partial/article.ejs中底部评论框替换为：<br><figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span>&lt;%<span class="perl"> <span class="keyword">if</span> (!<span class="keyword">index</span> &amp;&amp; post.comments)&#123; </span>%&gt;<span class="xml"></span><br><span class="line"><span class="tag">&lt;<span class="title">section</span> <span class="attribute">id</span>=<span class="value">"comments"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 多说评论框 start --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-thread-key</span>=<span class="value">"</span></span></span>&lt;%=<span class="perl"> post.path</span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">data-title</span>=<span class="value">"</span></span></span>&lt;%=<span class="perl"> post.title </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">data-url</span>=<span class="value">"</span></span></span>&lt;%<span class="perl">-url_for(post.path)</span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">"labnize"</span>&#125;;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ds = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">    ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;</span><br><span class="line">    ds.src = (<span class="built_in">document</span>.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</span><br><span class="line">    ds.charset = <span class="string">'UTF-8'</span>;</span><br><span class="line">    (<span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] </span><br><span class="line">     || <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);</span><br><span class="line">  &#125;)();</span><br><span class="line">  </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">section</span>&gt;</span></span><br><span class="line"></span>&lt;%<span class="perl"> &#125; </span>%&gt;<span class="xml"></span></span><br></pre></td></tr></table></figure></p>
+<p>重新生成页面后，即可看到底部的评论框。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>登录多说，点击工具，获得如下代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[萌萌哒]]></title>
@@ -25,21 +80,6 @@
     <summary type="html">
     <![CDATA[<p>要不要这样可怜兮兮。。<br><img src="http://img5.duitang.com/uploads/item/201407/30/20140730152939_zPFKy.thumb.700_0.jpeg" alt="dog"></p>
 ]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[感受]]></title>
-    <link href="http://yoursite.com/2016/01/06/My-New-Post/"/>
-    <id>http://yoursite.com/2016/01/06/My-New-Post/</id>
-    <published>2016-01-06T08:11:34.000Z</published>
-    <updated>2016-01-18T11:25:31.000Z</updated>
-    <content type="html"><![CDATA[<!-- 《love me like you do》翻唱版，循环中，好听~
-<embed type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" quality="high" height="480" width="480" src="http://video.weibo.com/player/1034:664f869287a7bcece96d76a0936ee560/v.swf"/> -->]]></content>
-    <summary type="html">
-    <![CDATA[<!-- 《love me like you do》翻唱版，循环中，好听~
-<embed type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="t]]>
     </summary>
     
   </entry>
