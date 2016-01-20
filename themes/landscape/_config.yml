@@ -2,7 +2,8 @@
 menu:
   Home: /
   Archives: /archives
-rss: /atom.xml
+  Rss: /atom.xml
+  Sitemap: /Sitemap.xml
 
 # Content
 excerpt_link: Read More

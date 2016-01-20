@@ -4,4 +4,5 @@ tags:
 ---
 
 要不要这样可怜兮兮。。
-<img src="http://img5.duitang.com/uploads/item/201407/30/20140730152939_zPFKy.thumb.700_0.jpeg">
+![dog](http://img5.duitang.com/uploads/item/201407/30/20140730152939_zPFKy.thumb.700_0.jpeg)
+

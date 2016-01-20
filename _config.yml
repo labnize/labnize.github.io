@@ -71,3 +71,20 @@ deploy:
   type: git
   repository: git@github.com:labnize/labnize.github.io.git
   branch: master
+
+
+
+# Extensions
+Plugins:
+- hexo-generator-sitemap
+- hexo-generator-feed
+
+#sitemap
+sitemap:
+  path: sitemap.xml
+
+#Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
