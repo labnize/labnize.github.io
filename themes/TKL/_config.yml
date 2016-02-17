@@ -1,0 +1,49 @@
+# config
+# cover: /img/bg_img.jpg
+cover: /img/banner1.jpg
+logo: /img/logo.png
+top_saying:
+- title: YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.
+- content: 每一个不曾起舞的日子都是对生命的辜负。
+bottom_saying: 虽然还没想好写点什么，但是总觉得这里放句话比较和谐。
+# Content
+excerpt_link: Read More
+
+rss: /atom.xml
+
+highlightjs: vs
+
+#Works
+works:
+- works_name: AAA
+  works_url: /
+- works_name: BBB
+  works_url: /atom.xml
+
+#duoshuo name
+duoshuo: labnize
+
+# Miscellaneous
+github: https://github.com/labnize/
+twitter: https://twitter.com/
+facebook: https://www.facebook.com/
+google: https://google.com/
+weibo: http://weibo.com/
+
+#about  timeline
+timeline:
+- num: 1
+  word: 2014/06/12-Start
+- num: 2
+  word: 2014/11/29-XXX
+- num: 3
+  word: 2015/02/18-DDD
+- num: 4
+  word: More
+
+#Links
+links:
+- name: July
+  link: https://github.com/labnize/
+# - name: Name
+#   link: http://domain.com/
