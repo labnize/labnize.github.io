@@ -1,4 +1,4 @@
-title: js全排列算法
+title: js全排列算法题
 date: 2017-06-08 14:43:44
 tags:
 ---
