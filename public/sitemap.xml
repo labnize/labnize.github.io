@@ -2,23 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/about.html</loc>
+    
+    <lastmod>2017-06-14T12:34:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/06/14/regexp/</loc>
+    
+    <lastmod>2017-06-14T07:01:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/06/08/full-permutation/</loc>
+    
+    <lastmod>2017-06-09T02:23:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/06/08/precision/</loc>
+    
+    <lastmod>2017-06-08T06:28:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/06/06/teamviewer/</loc>
+    
+    <lastmod>2017-06-06T07:21:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/01/20/duoshuo/</loc>
-    <lastmod>2016-01-20T08:41:13.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/01/13/second/</loc>
-    <lastmod>2016-01-20T08:41:13.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/01/20/hexo-plugins/</loc>
-    <lastmod>2016-01-20T08:41:13.000Z</lastmod>
+    
+    <lastmod>2017-06-05T11:41:29.000Z</lastmod>
+    
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/01/02/hello-world/</loc>
-    <lastmod>2016-01-20T08:41:13.000Z</lastmod>
+    
+    <lastmod>2017-06-05T11:41:29.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/20/hexo-plugins/</loc>
+    
+    <lastmod>2017-06-05T11:41:29.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/13/second/</loc>
+    
+    <lastmod>2017-06-05T11:41:29.000Z</lastmod>
+    
   </url>
   
 </urlset>

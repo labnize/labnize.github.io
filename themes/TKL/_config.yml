@@ -18,11 +18,11 @@ works:
 - works_name: Crabxlab
   works_url: /
 - works_name: AsiaInfo
-  works_url: http://www.asiainfo.com.cn/
-  #works_url: /
+  #works_url: http://www.asiainfo.com.cn/
+  works_url: /
 - works_name: ZTE
-  #works_url: /
-  works_url: http://www.zte.com.cn/
+  works_url: /
+  #works_url: http://www.zte.com.cn/
 
 
 #duoshuo name
