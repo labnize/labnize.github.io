@@ -53,6 +53,7 @@ $ npm install --save-dev babel-preset-stage-1
 $ npm install --save-dev babel-preset-stage-2
 $ npm install --save-dev babel-preset-stage-3
 ```
+> 最新的babel文档已使用babel-preset-env来替代es2015, es2016, es2017, latest
 
 然后，将这些规则加入`.babelrc`
 
@@ -66,6 +67,14 @@ $ npm install --save-dev babel-preset-stage-3
     "plugins": []
   }
 ```
+
+babel-preset-env则使用如下规则
+```
+{
+  "presets": ["env"]
+}
+```
+
 
 注意，以下所有Babel工具和模块的使用，都必须先写好.babelrc。
 
@@ -136,5 +145,16 @@ $ npm install --save-dev eslint babel-eslint
 }
 ```
 
+___
 
+## 六、插件
 
+1. babel-plugin-transform-class-properties
+
+   > This plugin transforms class propeties
+   >
+   > 该插件用于解决es6语法中，Class内部只有静态方法，没有静态属性的问题。
+
+2. babel-plugin-transform-decorators-legacy
+
+   > 该插件安装装饰器支持，一般使用mobx时会需要。
