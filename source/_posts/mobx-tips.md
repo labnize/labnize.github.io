@@ -13,3 +13,19 @@ tags:
 需要对对象进行拷贝，才会重新render，如下：
 
 ![mobx2](/img/mobx2.jpg)
+
+​          
+
+考虑到减少render次数，提升性能，当observable中的list和total都需要改变时，只让页面render一次。代码如下：
+
+![mobx3](/img/mobx3.jpg)
+
+​          
+
+#### 注意：此处使用扩展运算符或Object.assign对对象进行拷贝，如果只是通过‘=’进行拷贝，Mobx不会对嵌套的对象进行递归。对比如下：
+
+![mobx4](/img/mobx4.jpg)
+
+​          
+
+![mobx5](/img/mobx5.jpg)
