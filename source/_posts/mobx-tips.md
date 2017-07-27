@@ -29,3 +29,15 @@ tags:
 ​          
 
 ![mobx5](/img/mobx5.jpg)
+
+​          
+
+## 2. 传递对象
+
+当通过 observable 传递对象时，只有在把对象转变 observable 时存在的属性才会是可观察的。 稍后添加到对象的属性不会变为可观察的，除非使用 [extendObservable](http://cn.mobx.js.org/refguide/extend-observable.html)。
+
+​          
+
+## 3. 传递数组
+
+请记住无论如何 Array.isArray(observable([])) 都将返回 false ，所以无论何时当你需要传递 observable 数组到外部库时，通过使用 array.slice() 在 observable 数组传递给外部库或者内置方法前创建一份浅拷贝(无论如何这都是最佳实践)总会是一个好主意。 换句话说，Array.isArray(observable([]).slice()) 会返回 true。
