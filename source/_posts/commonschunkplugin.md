@@ -41,17 +41,13 @@ CommonsChunkPlugin用于抽取公共代码，比如：第三方类库或框架�
 
 ​          
 
-webpack配置output时，可以通过可以通过filename模板指定生成的文件名中加上hash值，方便当迭代升级时主动使得浏览器缓存失效。
-
-​          
-
-
+#### webpack配置output时，可以通过可以通过filename模板指定生成的文件名中加上hash值，方便当迭代升级时主动使得浏览器缓存失效。
 
 #### output配置如下：
 
 ![comchunkplugin5](/img/comchunkplugin5.png)
 
-因为vendor文件中**不拒绝**包含其他文件的文件名，而其他文件的文件名里的hash值是变化的，因此vendor文件内容是变化的——vendor文件的hash值也会随迭代升级而变化，太不负责任了。
+因为vendor文件中**不拒绝**包含其他文件的文件名，而其他文件的文件名里的hash值是变化的，因此vendor文件内容是变化的——**vendor文件的hash值也会随迭代升级而变化，太不负责任了，并未成功实现缓存。**
 
 ​        
 
@@ -61,7 +57,7 @@ webpack配置output时，可以通过可以通过filename模板指定生成的�
 
 在配置中添加new webpack.HashedModuleIdsPlugin( )。具体说明：https://webpack.js.org/guides/caching/
 
-**注意：使用该插件时，CommonsChunkPlugin中name配置中，vendor必须放在common前面**
+**注意：使用该插件时，CommonsChunkPlugin中name配置中，vendor必须放在common前面**。
 
 ​        
 
