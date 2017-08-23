@@ -41,7 +41,7 @@ CommonsChunkPlugin用于抽取公共代码，比如：第三方类库或框架�
 
 ​          
 
-#### webpack配置output时，可以通过可以通过filename模板指定生成的文件名中加上hash值，方便当迭代升级时主动使得浏览器缓存失效。
+webpack配置output时，可以通过可以通过filename模板指定生成的文件名中加上hash值，方便当迭代升级时主动使得浏览器缓存失效。
 
 #### output配置如下：
 
@@ -61,7 +61,7 @@ CommonsChunkPlugin用于抽取公共代码，比如：第三方类库或框架�
 
 ​        
 
-#### 打包后的文件对比：
+#### 当业务代码发生变化，打包后的文件对比：
 
 ![comchunkplugin6](/img/comchunkplugin6.png)
 
