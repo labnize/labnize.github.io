@@ -3,6 +3,8 @@ date: 2017-09-04 18:47:43
 tags:
 ---
 
+项目地址：https://github.com/labnize/vue-vuex-router-element-webpack
+
 ### 安装eslint-plugin-vue
 
 ```
@@ -10,6 +12,8 @@ npm install --save-dev eslint eslint-plugin-vue@3.12
 ```
 
 **注意：eslint-plugin-vue要求ESlint >=3.18.0 & <= 4.3.0**
+
+此项目因airbnb-base版本要求eslint为3.19.0或4.5.0，所以选择了eslint@3.19.0。
 
 ### 配置.eslintrc
 
