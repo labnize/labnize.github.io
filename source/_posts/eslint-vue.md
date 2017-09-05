@@ -11,7 +11,11 @@ tags:
 npm install --save-dev eslint eslint-plugin-vue@3.12
 ```
 
+亲测eslint-plugin-vue@3.13版本存在问题，所以此处选择3.12版本。
+
 **注意：eslint-plugin-vue要求ESlint >=3.18.0 & <= 4.3.0**
+
+插件地址：https://github.com/vuejs/eslint-plugin-vue
 
 此项目因airbnb-base版本要求eslint为3.19.0或4.5.0，所以选择了eslint@3.19.0。
 
@@ -23,7 +27,7 @@ extends: ['plugin:vue/recommended', 'airbnb-base']
 
 
 
-某：app.vue
+app.vue
 
 ```js
 <template>
