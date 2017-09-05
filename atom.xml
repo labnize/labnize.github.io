@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>July&#39;s Life</title>
+  <subtitle>July Zhu</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://july.life/"/>
+  <updated>2017-09-05T08:40:10.831Z</updated>
+  <id>http://july.life/</id>
+  
+  <author>
+    <name>July.Zhu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Antd字体图标本地化</title>
+    <link href="http://july.life/2017/antd-icon/"/>
+    <id>http://july.life/2017/antd-icon/</id>
+    <published>2017-09-05T15:38:01.000Z</published>
+    <updated>2017-09-05T08:40:10.831Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>antd图标默认托管在<a href="http://iconfont.cn/，" target="_blank" rel="external">http://iconfont.cn/，</a> 默认公网可访问。如需本地部署，可参考<a href="https://github.com/ant-design/antd-init/tree/master/examples/local-iconfont" target="_blank" rel="external">示例</a>。</p>
+</blockquote>
+<p>以上是antd官网推荐方法，但亲测后发现有坑，打包后字体图标文件并没有成功打包。</p>
+<p>经过一番尝试，得出以下解决方案：</p>
+<h3 id="antd主题配置"><a href="#antd主题配置" class="headerlink" title="antd主题配置"></a>antd主题配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">'@icon-url'</span>: <span class="string">`"<span class="subst">$&#123;path.relative(<span class="string">'./~/antd/lib/style/*'</span>, <span class="string">'./res/iconfont/iconfont'</span>)&#125;</span>"`</span></div></pre></td></tr></table></figure>
+<p>此处得是相对路径。</p>
+<hr>
+<h3 id="webpack配置"><a href="#webpack配置" class="headerlink" title="webpack配置"></a>webpack配置</h3><figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        test: /\.(<span class="name">woff</span>|woff2|eot|ttf|svg)$/,</div><div class="line">        use: ['url-loader?limit=1&amp;name=iconfont/[name].[hash:8].[ext]']</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将字体图标打包到iconfont文件夹中。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;antd图标默认托管在&lt;a href=&quot;http://iconfont.cn/，&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://iconfont.cn/，&lt;/a&gt; 默认公网可访问。如需本地部署，可参考&lt;a href=
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>eslint对.vue文件中的template和script进行检查并修复</title>
+    <link href="http://july.life/2017/eslint-vue/"/>
+    <id>http://july.life/2017/eslint-vue/</id>
+    <published>2017-09-04T18:47:43.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>项目地址：<a href="https://github.com/labnize/vue-vuex-router-element-webpack" target="_blank" rel="external">https://github.com/labnize/vue-vuex-router-element-webpack</a></p>
+<h3 id="安装eslint-plugin-vue"><a href="#安装eslint-plugin-vue" class="headerlink" title="安装eslint-plugin-vue"></a>安装eslint-plugin-vue</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">npm</span> <span class="selector-tag">install</span> <span class="selector-tag">--save-dev</span> <span class="selector-tag">eslint</span> <span class="selector-tag">eslint-plugin-vue</span>@<span class="keyword">3</span>.<span class="keyword">12</span></div></pre></td></tr></table></figure>
+<p>亲测eslint-plugin-vue@3.13版本存在问题，所以此处选择3.12版本。</p>
+<p><strong>注意：eslint-plugin-vue要求ESlint &gt;=3.18.0 &amp; &lt;= 4.3.0</strong></p>
+<p>插件地址：<a href="https://github.com/vuejs/eslint-plugin-vue" target="_blank" rel="external">https://github.com/vuejs/eslint-plugin-vue</a></p>
+<p>此项目因airbnb-base版本要求eslint为3.19.0或4.5.0，所以选择了eslint@3.19.0。</p>
+<h3 id="配置-eslintrc"><a href="#配置-eslintrc" class="headerlink" title="配置.eslintrc"></a>配置.eslintrc</h3><figure class="highlight sml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">extends: [<span class="symbol">'plugin</span>:vue/recommended', <span class="symbol">'airbnb</span>-base']</div></pre></td></tr></table></figure>
+<p>app.vue</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">  &lt;div id=<span class="string">"app"</span>&gt;</div><div class="line">    &lt;layout v-bind=<span class="string">""</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span></div><div class="line">  &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">import</span> Layout <span class="keyword">from</span> <span class="string">'./components/layout'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  name: <span class="string">'app'</span>   ,</div><div class="line">  components: &#123;</div><div class="line">    Layout</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">&lt;style&gt;</span></div><div class="line"><span class="regexp">#app &#123;</span></div><div class="line"><span class="regexp">  font-family: 'Avenir', Helvetica, Arial, sans-serif;</span></div><div class="line"><span class="regexp">  -webkit-font-smoothing: antialiased;</span></div><div class="line"><span class="regexp">  -moz-osx-font-smoothing: grayscale;</span></div><div class="line"><span class="regexp">&#125;</span></div><div class="line"><span class="regexp">&lt;/</span>style&gt;</div></pre></td></tr></table></figure>
+<p>使用命令行进行eslint检查</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">node_modules</span>/.<span class="keyword">bin/eslint </span>src/app.vue</div></pre></td></tr></table></figure>
+<p><img src="/img/eslint-vue1.png" alt="eslint-vue1"></p>
+<p>可看到报错信息。</p>
+<h3 id="配置VS-code来显示报错提示"><a href="#配置VS-code来显示报错提示" class="headerlink" title="配置VS code来显示报错提示"></a>配置VS code来显示报错提示</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="string">"eslint.validate"</span>: [</div><div class="line">        <span class="string">"javascript"</span>,</div><div class="line">        <span class="string">"javascriptreact"</span>,</div><div class="line">        <span class="string">"html"</span>,</div><div class="line">        <span class="string">"vue"</span>,</div><div class="line">        &#123;<span class="string">"language"</span>: <span class="string">"html"</span>,<span class="string">"autoFix"</span>: <span class="literal">true</span>&#125;,</div><div class="line">        &#123;<span class="string">"language"</span>: <span class="string">"vue"</span>,<span class="string">"autoFix"</span>: <span class="literal">true</span>&#125;</div><div class="line"> ],</div><div class="line"><span class="string">"javascript.validate.enable"</span>: <span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>可看到提示界面如下：</p>
+<p><img src="/img/eslint-vue2.png" alt="eslint-vue2"></p>
+<h3 id="自动修复eslint报错"><a href="#自动修复eslint报错" class="headerlink" title="自动修复eslint报错"></a>自动修复eslint报错</h3><p>以上VS code已配置了保存时自动修复功能</p>
+<p>也可使用命令行进行修复</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node_modules/<span class="string">.bin/eslint</span> <span class="params">--fix</span> src/app.vue</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;项目地址：&lt;a href=&quot;https://github.com/labnize/vue-vuex-router-element-webpack&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/labnize/vue-v
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>webpack commonschunkplugin体验</title>
+    <link href="http://july.life/2017/commonschunkplugin/"/>
+    <id>http://july.life/2017/commonschunkplugin/</id>
+    <published>2017-08-23T17:11:20.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>CommonsChunkPlugin用于抽取公共代码，比如：第三方类库或框架，以及多个入口的公共模块，公共部分会被缓存，所有应用都可以利用缓存内容从而提高性能。</p>
+<p>下面通过具体来实现公共代码的提取，并且将公共的第三方库和公共的业务模块分开打包。项目地址：<a href="https://github.com/labnize/react-webpack3" target="_blank" rel="external">https://github.com/labnize/react-webpack3</a></p>
+<h2 id="1-多页应用例子"><a href="#1-多页应用例子" class="headerlink" title="1.多页应用例子"></a>1.多页应用例子</h2><h4 id="目录结构如下："><a href="#目录结构如下：" class="headerlink" title="目录结构如下："></a>目录结构如下：</h4><p><img src="/img/comchunkplugin1.png" alt="comchunkplugin1"></p>
+<p>​          </p>
+<h4 id="entry配置如下："><a href="#entry配置如下：" class="headerlink" title="entry配置如下："></a>entry配置如下：</h4><p><img src="/img/comchunkplugin2.png" alt="comchunkplugin2"></p>
+<p>此处有两个入口 app、app1，这两个文件中都引用了模块test1.jsx。</p>
+<p>​          </p>
+<h4 id="CommonsChunkPlugin配置如下："><a href="#CommonsChunkPlugin配置如下：" class="headerlink" title="CommonsChunkPlugin配置如下："></a>CommonsChunkPlugin配置如下：</h4><p><img src="/img/comchunkplugin3.png" alt="comchunkplugin3"></p>
+<p><strong>这里name配置为数组，打包时，将符合引用次数(minChunks)的公共业务模块打包到name参数数组的第一个块里，即common。数组中其它的块依次打包(查找entry里的key，没有找到key的则生成一个空的块)，此处只配置公共第三方库，即vendor。runtime可以所有的打包变成你想要的样子，效果见打包结果对比。</strong></p>
+<p> 因为vendor文件中<strong>不拒绝</strong>包含其他文件的文件名，而其他文件的文件名里的hash值是变化的，因此vendor文件内容是变化的——<strong>vendor文件的hash值也会随迭代升级而变化，太不负责任了，并未成功实现缓存。</strong></p>
+<p>需要在wepack config中配置插件new webpack.HashedModuleIdsPlugin( )。具体说明：<a href="https://webpack.js.org/guides/caching/" target="_blank" rel="external">https://webpack.js.org/guides/caching/</a>         </p>
+<p>​          </p>
+<h4 id="output配置如下："><a href="#output配置如下：" class="headerlink" title="output配置如下："></a>output配置如下：</h4><p><img src="/img/comchunkplugin6.png" alt="comchunkplugin5"></p>
+<p>webpack配置output时，可以通过可以通过filename模板指定生成的文件名中加上chunkhash值，方便当迭代升级时主动使得浏览器缓存失效。</p>
+<p>​          </p>
+<h4 id="打包后的文件如下："><a href="#打包后的文件如下：" class="headerlink" title="打包后的文件如下："></a>打包后的文件如下：</h4><p><img src="/img/comchunkplugin4.png" alt="comchunkplugin4"></p>
+<blockquote>
+<p>vendor中放的是第三方库文件</p>
+<p>common中放的是main.jsx和main1.jsx共同引用的test1.jsx文件</p>
+<p>app和app1分别存放的对应的main.jsx和main1.jsx文件</p>
+</blockquote>
+<h4 id="当main-jsx改变后，打包结果对比如下："><a href="#当main-jsx改变后，打包结果对比如下：" class="headerlink" title="当main.jsx改变后，打包结果对比如下："></a>当main.jsx改变后，打包结果对比如下：</h4><p><img src="/img/comchunkplugin5.png" alt="comchunkplugin5"></p>
+<p>发现vendor和common的hash值都没有改变，从而成功实现了缓存。<strong>如果不加runtime，则vendor的hash值是变化的。</strong></p>
+<p>官网解释如下：</p>
+<p><img src="/img/comchunkplugin8.png" alt="comchunkplugin8"></p>
+<p>链接地址：<a href="https://webpack.js.org/guides/caching/" target="_blank" rel="external">https://webpack.js.org/guides/caching/</a></p>
+<hr>
+<h2 id="2-单页应用"><a href="#2-单页应用" class="headerlink" title="2.单页应用"></a>2.单页应用</h2><p>单页应用没有多个入口文件，所以不会有公共引用的业务模块，只需将CommonsChunkPlugin配置如下就可以了：</p>
+<p><img src="/img/comchunkplugin7.png" alt="comchunkplugin7"></p>
+<p>打包出的文件少了common。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;CommonsChunkPlugin用于抽取公共代码，比如：第三方类库或框架，以及多个入口的公共模块，公共部分会被缓存，所有应用都可以利用缓存内容从而提高性能。&lt;/p&gt;
+&lt;p&gt;下面通过具体来实现公共代码的提取，并且将公共的第三方库和公共的业务模块分开打包。项目地址：&lt;a h
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>webpack打包html中图片</title>
+    <link href="http://july.life/2017/webpack-html-img/"/>
+    <id>http://july.life/2017/webpack-html-img/</id>
+    <published>2017-08-15T09:19:40.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-通过javascript引入图片"><a href="#1-通过javascript引入图片" class="headerlink" title="1. 通过javascript引入图片"></a>1. 通过javascript引入图片</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ES2016</span></div><div class="line"><span class="keyword">import</span> imgUrl <span class="keyword">from</span> <span class="string">'path/to/xxxx.png'</span>;</div><div class="line"></div><div class="line"><span class="comment">//CommonJS</span></div><div class="line"><span class="keyword">var</span> imgUrl = <span class="built_in">require</span>(<span class="string">'path/to/xxxx.png'</span>);</div></pre></td></tr></table></figure>
+<p>js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">imgTempl = <span class="string">'&lt;img src="'</span>+imgUrl+<span class="string">'" /&gt;'</span>;</div><div class="line"><span class="built_in">document</span>.body.innerHTML = imgTempl;</div></pre></td></tr></table></figure>
+<p>react</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">render() &#123;</div><div class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;imgUrl&#125;</span> /&gt;</span>);</span></div><div class="line"><span class="xml">&#125;</span></div></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-通过html-withimg-loader打包"><a href="#2-通过html-withimg-loader打包" class="headerlink" title="2. 通过html-withimg-loader打包"></a>2. 通过html-withimg-loader打包</h2><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install html-withimg-loader --<span class="built_in">save</span>-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+<p>webpack.config.js添加配置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">module</span>: &#123;</div><div class="line">　　<span class="attribute">loaders</span>: [</div><div class="line">　　　　&#123;</div><div class="line">　　　　　　test: /\.html$/,</div><div class="line">　　　　　　loader: <span class="string">'html-withimg-loader'</span></div><div class="line">　　　　&#125;</div><div class="line">　　]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>img中src的路径必须为相对路径</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">render() &#123;</div><div class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">'./images/bg.jpg'</span> /&gt;</span>);</span></div><div class="line"><span class="xml">&#125;</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-通过javascript引入图片&quot;&gt;&lt;a href=&quot;#1-通过javascript引入图片&quot; class=&quot;headerlink&quot; title=&quot;1. 通过javascript引入图片&quot;&gt;&lt;/a&gt;1. 通过javascript引入图片&lt;/h2&gt;&lt;figure
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Mobx--那些踩过的坑。。</title>
+    <link href="http://july.life/2017/mobx-tips/"/>
+    <id>http://july.life/2017/mobx-tips/</id>
+    <published>2017-07-25T16:02:52.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-Mobx追踪属性访问，而不是值。"><a href="#1-Mobx追踪属性访问，而不是值。" class="headerlink" title="1. Mobx追踪属性访问，而不是值。"></a>1. Mobx追踪属性访问，而不是值。</h2><p>也就是说，当对observable中的属性进行拷贝后，如果再来改变这个值，Mobx是不会作出反应的（即不会重新进行render）。下面代码不会重新render。</p>
+<p><img src="/img/mobx1.jpg" alt="mobx1"></p>
+<p>​          </p>
+<p>需要对对象进行拷贝，才会重新render，如下：</p>
+<p><img src="/img/mobx2.jpg" alt="mobx2"></p>
+<p>​          </p>
+<p>考虑到减少render次数，提升性能，当observable中的list和total都需要改变时，只让页面render一次。代码如下：</p>
+<p><img src="/img/mobx3.jpg" alt="mobx3"></p>
+<p>​          </p>
+<h4 id="注意：此处使用扩展运算符或Object-assign对对象进行拷贝，如果只是通过”-”进行拷贝，Mobx不会对嵌套的对象进行递归。对比如下："><a href="#注意：此处使用扩展运算符或Object-assign对对象进行拷贝，如果只是通过”-”进行拷贝，Mobx不会对嵌套的对象进行递归。对比如下：" class="headerlink" title="注意：此处使用扩展运算符或Object.assign对对象进行拷贝，如果只是通过”=”进行拷贝，Mobx不会对嵌套的对象进行递归。对比如下："></a>注意：此处使用扩展运算符或Object.assign对对象进行拷贝，如果只是通过”=”进行拷贝，Mobx不会对嵌套的对象进行递归。对比如下：</h4><p><img src="/img/mobx4.jpg" alt="mobx4"></p>
+<p>​          </p>
+<p><img src="/img/mobx5.jpg" alt="mobx5"></p>
+<p>​          </p>
+<h2 id="2-传递对象"><a href="#2-传递对象" class="headerlink" title="2. 传递对象"></a>2. 传递对象</h2><p>当通过 observable 传递对象时，只有在把对象转变 observable 时存在的属性才会是可观察的。 稍后添加到对象的属性不会变为可观察的，除非使用 <a href="http://cn.mobx.js.org/refguide/extend-observable.html" target="_blank" rel="external">extendObservable</a>。</p>
+<p>​          </p>
+<h2 id="3-传递数组"><a href="#3-传递数组" class="headerlink" title="3. 传递数组"></a>3. 传递数组</h2><p>请记住无论如何 Array.isArray(observable([])) 都将返回 false ，所以无论何时当你需要传递 observable 数组到外部库时，通过使用 array.slice() 在 observable 数组传递给外部库或者内置方法前创建一份浅拷贝(无论如何这都是最佳实践)总会是一个好主意。 换句话说，Array.isArray(observable([]).slice()) 会返回 true。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-Mobx追踪属性访问，而不是值。&quot;&gt;&lt;a href=&quot;#1-Mobx追踪属性访问，而不是值。&quot; class=&quot;headerlink&quot; title=&quot;1. Mobx追踪属性访问，而不是值。&quot;&gt;&lt;/a&gt;1. Mobx追踪属性访问，而不是值。&lt;/h2&gt;&lt;p&gt;也就是说
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Webpack打包编译进度显示</title>
+    <link href="http://july.life/2017/webpack-progress/"/>
+    <id>http://july.life/2017/webpack-progress/</id>
+    <published>2017-07-17T13:22:18.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-配置命令行选项"><a href="#1-配置命令行选项" class="headerlink" title="1. 配置命令行选项"></a>1. 配置命令行选项</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack --progress</div></pre></td></tr></table></figure>
+<p>​          </p>
+<h2 id="2-ProgressPlugin插件"><a href="#2-ProgressPlugin插件" class="headerlink" title="2. ProgressPlugin插件"></a>2. ProgressPlugin插件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.ProgressPlugin(<span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params">percentage, msg</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log((percentage.toFixed(<span class="number">2</span>) * <span class="number">100</span>) + <span class="string">'%'</span>, msg);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>​          </p>
+<h2 id="3-progress-bar-webpack-plugin插件"><a href="#3-progress-bar-webpack-plugin插件" class="headerlink" title="3. progress-bar-webpack-plugin插件"></a>3. progress-bar-webpack-plugin插件</h2><p><img src="/img/progress-bar.gif" alt="progress-bar"></p>
+<p>安装：<a href="https://www.npmjs.com/package/progress-bar-webpack-plugin" target="_blank" rel="external">https://www.npmjs.com/package/progress-bar-webpack-plugin</a></p>
+<p>配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> ProgressBarPlugin(&#123;</div><div class="line">    format: <span class="string">'  build [:bar] :percent (:elapsed seconds)'</span>,</div><div class="line">    clear: <span class="literal">false</span>, </div><div class="line">    width: <span class="number">60</span></div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-配置命令行选项&quot;&gt;&lt;a href=&quot;#1-配置命令行选项&quot; class=&quot;headerlink&quot; title=&quot;1. 配置命令行选项&quot;&gt;&lt;/a&gt;1. 配置命令行选项&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vs code前端插件推荐</title>
+    <link href="http://july.life/2017/vs-plugins/"/>
+    <id>http://july.life/2017/vs-plugins/</id>
+    <published>2017-06-30T16:59:11.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" rel="external">Auto Close Tag</a>，用于html标签自动闭合</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_blank" rel="external">Auto Rename Tag</a>，修改HTML标签时，自动修改匹配的标签</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="external">Eslint</a>，Eslint插件，高亮提示。在settings.json中将”eslint.autoFixOnSave”: true, 保存时会自动修复eslint错误</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css" target="_blank" rel="external">HTML CSS Support</a>，css提示</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets" target="_blank" rel="external">HTML Snippets</a>，这款插件包含html标签，非常全，很实用</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets" target="_blank" rel="external">JavaScript (ES6) code snippets</a>，ES6语法代码段</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=akamud.vscode-javascript-snippet-pack" target="_blank" rel="external">JavaScript Snippet Pack</a>，针对js的插件，包含了js的常用语法关键字</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.jquerysnippets" target="_blank" rel="external">jQuery Code Snippets</a>，针对jQuery的插件，包含了jQuery的常用语法关键字</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense" target="_blank" rel="external">npm Intellisense</a>， 导入模块时，提示已安装模块名称</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense" target="_blank" rel="external">Path Intellisense</a>，路径提示</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets" target="_blank" rel="external">Reactjs code snippets</a>，Reactjs语法片段</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=EQuimper.react-native-react-redux" target="_blank" rel="external">React-Native/React/Redux snippets for es6/es7</a>，React-Native/React/Redux snippets的es6/es7语法片段</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=jasonlhy.vscode-browser-sync" target="_blank" rel="external">VSCode Browser Sync</a>，浏览器同步工具，实现热加载</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Auto Close Tag&lt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>webpack中babel配置</title>
+    <link href="http://july.life/2017/babelconfig/"/>
+    <id>http://july.life/2017/babelconfig/</id>
+    <published>2017-06-28T16:03:49.000Z</published>
+    <updated>2017-09-05T08:40:10.831Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有的环境执行。这意味着，你可以现在就用ES6编写程序，而不用担心现有环境是否支持。</p>
+</blockquote>
+<h2 id="一、babel-loader安装使用"><a href="#一、babel-loader安装使用" class="headerlink" title="一、babel-loader安装使用"></a>一、babel-loader安装使用</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install </span><span class="keyword">babel-loader </span><span class="keyword">babel-core </span><span class="keyword">babel-preset-env </span>webpack --save-dev</div></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">yarn</span> <span class="keyword">add </span><span class="keyword">babel-loader </span><span class="keyword">babel-core </span><span class="keyword">babel-preset-env </span>webpack --dev</div></pre></td></tr></table></figure>
+<p>webpack config中配置见 <a href="https://github.com/babel/babel-loader/tree/v6.4.1" target="_blank" rel="external">https://github.com/babel/babel-loader/tree/v6.4.1</a></p>
+<hr>
+<h2 id="二、配置文件-babelrc"><a href="#二、配置文件-babelrc" class="headerlink" title="二、配置文件.babelrc"></a>二、配置文件.babelrc</h2><p>Babel的配置文件是.babelrc，存放在项目的根目录下。</p>
+<p>该文件用来设置转码规则和插件，基本格式如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"presets"</span>: [],</div><div class="line">  <span class="attr">"plugins"</span>: []</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>presets</code>字段设定转码规则，官方提供以下的规则集，你可以根据需要安装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> ES2015转码规则</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install --save-dev babel-preset-es2015</span></div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> react转码规则</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install --save-dev babel-preset-react</span></div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install --save-dev babel-preset-stage-0</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install --save-dev babel-preset-stage-1</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install --save-dev babel-preset-stage-2</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install --save-dev babel-preset-stage-3</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>最新的babel文档已使用babel-preset-env来替代es2015, es2016, es2017, latest</p>
+</blockquote>
+<p>然后，将这些规则加入<code>.babelrc</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"presets"</span>: [</div><div class="line">      <span class="string">"es2015"</span>,</div><div class="line">      <span class="string">"react"</span>,</div><div class="line">      <span class="string">"stage-2"</span></div><div class="line">    ],</div><div class="line">    <span class="attr">"plugins"</span>: []</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>babel-preset-env则使用如下规则<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"presets"</span>: [<span class="string">"env"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注意，以下所有Babel工具和模块的使用，都必须先写好.babelrc。</p>
+<hr>
+<h2 id="三、babel-core"><a href="#三、babel-core" class="headerlink" title="三、babel-core"></a>三、babel-core</h2><p>如果某些代码需要调用Babel的API进行转码，就要使用<code>babel-core</code>模块。</p>
+<p>安装命令如下：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm <span class="keyword">install </span><span class="keyword">babel-core </span>--save-dev</div></pre></td></tr></table></figure>
+<p>一般babel-core都是作为babel-loader的依赖项添加的。</p>
+<hr>
+<h2 id="四、babel-polyfill"><a href="#四、babel-polyfill" class="headerlink" title="四、babel-polyfill"></a>四、babel-polyfill</h2><p>Babel默认值转换新的JavaScript句法，而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如Object.assign）都不会转码。</p>
+<p>举例来说，ES6在<code>Array</code>对象上新增了<code>Array.from</code>方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用<code>babel-polyfill</code>，为当前环境提供一个垫片。</p>
+<p>安装命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> npm install --save babel-polyfill</span></div></pre></td></tr></table></figure>
+<p>然后，在脚本头部，加入如下一行代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'babel-polyfill'</span>;</div><div class="line"><span class="comment">// 或者</span></div><div class="line"><span class="built_in">require</span>(<span class="string">'babel-polyfill'</span>);</div></pre></td></tr></table></figure>
+<p>Babel默认不转码的API非常多，详细清单可以查看<code>babel-plugin-transform-runtime</code>模块的<a href="https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-runtime/src/definitions.js" target="_blank" rel="external">definitions.js</a>文件。</p>
+<hr>
+<h2 id="五、与其他工具的配合"><a href="#五、与其他工具的配合" class="headerlink" title="五、与其他工具的配合"></a>五、与其他工具的配合</h2><p>许多工具需要Babel进行前置转码，比如ESLint</p>
+<p>ESlint用于静态检查代码的语法和风格，安装命令如下：</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> eslint babel-eslint</div></pre></td></tr></table></figure>
+<p>然后，在项目根目录下，新建一个配置文件<code>.eslint</code>，在其中加入<code>parser</code>字段。</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"parser"</span>: <span class="string">"babel-eslint"</span>,</div><div class="line">  <span class="string">"rules"</span>: &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="六、插件"><a href="#六、插件" class="headerlink" title="六、插件"></a>六、插件</h2><ol>
+<li><p>babel-plugin-transform-class-properties</p>
+<blockquote>
+<p>This plugin transforms class propeties</p>
+<p>该插件用于解决es6语法中，Class内部只有静态方法，没有静态属性的问题。</p>
+</blockquote>
+</li>
+<li><p>babel-plugin-transform-decorators-legacy</p>
+<blockquote>
+<p>该插件安装装饰器支持，一般使用mobx时会需要。</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有的环境执行。这意味着，你可以现在就用ES6编写程序，而不用担心现有环境是否支持。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;一、babel-loader安装使用&quot;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vs code keyboard shortcuts for mac</title>
+    <link href="http://july.life/2017/vscode-key/"/>
+    <id>http://july.life/2017/vscode-key/</id>
+    <published>2017-06-22T11:05:01.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>只整理了本人常用的几个键，全量下载地址 <a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf" target="_blank" rel="external">keyboard shortcuts for mac</a></p>
+<p>⌘+click : Insert cursor</p>
+<p>⌥↓ / ⌥↑ : Move line down/up</p>
+<p>⇧⌥↓ / ⇧⌥↑ : Copy line down/up</p>
+<p>⇧⌘K : Delete line</p>
+<p>⌘↑ / ⌘↓ : Go to beginning/end of file</p>
+<p>⌘← / ⌘→ : Go to beginning/end of line</p>
+<p>⌘/ : Toggle line comment</p>
+<p>⌃- / ⌃⇧- : Go back/forward</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;只整理了本人常用的几个键，全量下载地址 &lt;a href=&quot;https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;keyboar
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>eslint配置</title>
+    <link href="http://july.life/2017/eslintconfig/"/>
+    <id>http://july.life/2017/eslintconfig/</id>
+    <published>2017-06-18T23:15:02.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装、配置"><a href="#安装、配置" class="headerlink" title="安装、配置"></a>安装、配置</h2><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install eslint --<span class="built_in">save</span>-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+<p>在项目根目录下新建.eslintrc进行配置</p>
+<p>可参考</p>
+<p><a href="https://github.com/eslint/eslint" target="_blank" rel="external">https://github.com/eslint/eslint</a></p>
+<p><a href="http://eslint.cn/docs/user-guide/configuring" target="_blank" rel="external">http://eslint.cn/docs/user-guide/configuring</a></p>
+<hr>
+<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p>rules可以到<a href="http://eslint.org/docs/rules/" target="_blank" rel="external">Llist of available rules </a>进行查询。</p>
+<p>规则的错误等级有三种：</p>
+<ul>
+<li>“off” 或者 0：关闭规则。</li>
+<li>“warn” 或者 1：打开规则，并且作为一个警告（不影响exit code）。</li>
+<li>“error” 或者 2：打开规则，并且作为一个错误（exit code将会是1）。</li>
+</ul>
+<hr>
+<h2 id="指定全局变量"><a href="#指定全局变量" class="headerlink" title="指定全局变量"></a>指定全局变量</h2><p>可以在配置文件或注释中指定额外的全局变量，<code>false</code>表明变量只读：</p>
+<p>注释：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/* <span class="keyword">global</span> var1, var2 */</div><div class="line">/* <span class="keyword">global</span> var1:<span class="literal">false</span>, var2:<span class="literal">false</span> */</div></pre></td></tr></table></figure>
+<p>JSON:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"globals"</span>: &#123;</div><div class="line">      <span class="attr">"var1"</span>: <span class="literal">true</span>,</div><div class="line">      <span class="attr">"var2"</span>: <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>附上一份个人目前正在使用的配置:</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="string">"devDependencies"</span>: &#123;</div><div class="line">    <span class="string">"eslint"</span>: <span class="string">"^3.19.0"</span>,</div><div class="line">    <span class="string">"eslint-config-airbnb"</span>: <span class="string">"^15.0.1"</span>,</div><div class="line">    <span class="string">"eslint-plugin-import"</span>: <span class="string">"^2.3.0"</span>,</div><div class="line">    <span class="string">"eslint-plugin-jsx-a11y"</span>: <span class="string">"^5.0.3"</span>,</div><div class="line">    <span class="string">"eslint-plugin-react"</span>: <span class="string">"^7.1.0"</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"extends"</span>: <span class="string">"airbnb"</span>,</div><div class="line">  <span class="attr">"parser"</span>: <span class="string">"babel-eslint"</span>,</div><div class="line">  <span class="attr">"env"</span>: &#123;</div><div class="line">    <span class="attr">"browser"</span> : <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"rules"</span>: &#123;</div><div class="line">    <span class="attr">"quotes"</span>: [<span class="number">2</span>, <span class="string">"single"</span>],</div><div class="line">    <span class="attr">"semi"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"max-len"</span>: [<span class="number">1</span>, <span class="number">120</span>, <span class="number">2</span>],</div><div class="line">    <span class="attr">"arrow-body-style"</span>: [<span class="number">1</span>, <span class="string">"as-needed"</span>],</div><div class="line">    <span class="attr">"comma-dangle"</span>: [<span class="number">2</span>, <span class="string">"never"</span>],</div><div class="line">    <span class="attr">"no-debugger"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"no-console"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"object-curly-spacing"</span>: [<span class="number">2</span>, <span class="string">"always"</span>],</div><div class="line">    <span class="attr">"no-undef"</span>: [<span class="number">1</span>],</div><div class="line">    <span class="attr">"new-cap"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"no-param-reassign"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"import/no-extraneous-dependencies"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"import/no-unresolved"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"import/extensions"</span>: <span class="number">0</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;安装、配置&quot;&gt;&lt;a href=&quot;#安装、配置&quot; class=&quot;headerlink&quot; title=&quot;安装、配置&quot;&gt;&lt;/a&gt;安装、配置&lt;/h2&gt;&lt;figure class=&quot;highlight q&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Configuring a publishing source for GitHub Pages</title>
+    <link href="http://july.life/2017/github-pages/"/>
+    <id>http://july.life/2017/github-pages/</id>
+    <published>2017-06-15T19:31:05.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>下面是github提供的help文档：</p>
+<p><a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/" target="_blank" rel="external">https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;下面是github提供的help文档：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/&quot; target=&quot;_blank&quot; r
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>正则表达式</title>
+    <link href="http://july.life/2017/regexp/"/>
+    <id>http://july.life/2017/regexp/</id>
+    <published>2017-06-14T14:40:44.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="匹配前面的子表达式零次或一次"><a href="#匹配前面的子表达式零次或一次" class="headerlink" title="?匹配前面的子表达式零次或一次"></a>?匹配前面的子表达式零次或一次</h4><p>data?.dat</p>
+<h4 id="匹配前面的子表达式零次或多次"><a href="#匹配前面的子表达式零次或多次" class="headerlink" title="*匹配前面的子表达式零次或多次"></a>*匹配前面的子表达式零次或多次</h4><p>data*.dat</p>
+<h4 id="匹配前面子表达式一次或多次"><a href="#匹配前面子表达式一次或多次" class="headerlink" title="+匹配前面子表达式一次或多次"></a>+匹配前面子表达式一次或多次</h4><pre><code>^[0-9]+abc$
+</code></pre><ul>
+<li>^为匹配输入字符串的开始位置</li>
+<li>[0-9]+匹配多个数字，[0-9]匹配单个数字，+匹配一个或者多个</li>
+<li>abc$匹配字母abc并以abc结尾，$为匹配输入字符串的结束位置。</li>
+</ul>
+<hr>
+<h4 id="n-匹配确定的n次"><a href="#n-匹配确定的n次" class="headerlink" title="{n}匹配确定的n次"></a>{n}匹配确定的n次</h4><p>o{2}不能匹配Bob，但能匹配food         </p>
+<h4 id="o-n-至少匹配n次"><a href="#o-n-至少匹配n次" class="headerlink" title="o{n,}至少匹配n次"></a>o{n,}至少匹配n次</h4><p>o{2,} 不能匹配Bob，但能匹配fooood</p>
+<h4 id="n-m-最少匹配n次且最多匹配m次，注意在逗号和两个数之间不能有空格。"><a href="#n-m-最少匹配n次且最多匹配m次，注意在逗号和两个数之间不能有空格。" class="headerlink" title="{n,m}最少匹配n次且最多匹配m次，注意在逗号和两个数之间不能有空格。"></a>{n,m}最少匹配n次且最多匹配m次，注意在逗号和两个数之间不能有空格。</h4><h4 id="在-、-或？限定符之后放置？，该表达式从‘贪心’表达式转换为‘非贪心’表达式或者最小匹配。"><a href="#在-、-或？限定符之后放置？，该表达式从‘贪心’表达式转换为‘非贪心’表达式或者最小匹配。" class="headerlink" title="在*、+或？限定符之后放置？，该表达式从‘贪心’表达式转换为‘非贪心’表达式或者最小匹配。"></a>在*、+或？限定符之后放置？，该表达式从‘贪心’表达式转换为‘非贪心’表达式或者最小匹配。</h4><p>​        </p>
+<h4 id="匹配字符串的结尾位置"><a href="#匹配字符串的结尾位置" class="headerlink" title="$匹配字符串的结尾位置"></a>$匹配字符串的结尾位置</h4><h4 id="匹配字符串的开始位置"><a href="#匹配字符串的开始位置" class="headerlink" title="^匹配字符串的开始位置"></a>^匹配字符串的开始位置</h4><h4 id="b匹配一个字边界"><a href="#b匹配一个字边界" class="headerlink" title="\b匹配一个字边界"></a>\b匹配一个字边界</h4><pre><code>/\bCha/
+</code></pre><p>匹配以Cha开头的字符</p>
+<hr>
+<h4 id="B匹配非字边界"><a href="#B匹配非字边界" class="headerlink" title="\B匹配非字边界"></a>\B匹配非字边界</h4><pre><code>/\Bapt/
+</code></pre><p>匹配字符串中apt</p>
+<hr>
+<h4 id="匹配出换行符-n之外的任何单字符"><a href="#匹配出换行符-n之外的任何单字符" class="headerlink" title=".匹配出换行符\n之外的任何单字符"></a>.匹配出换行符\n之外的任何单字符</h4><h4 id="将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符"><a href="#将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符" class="headerlink" title="\将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符"></a>\将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符</h4><h4 id="字符开始和结束的位置"><a href="#字符开始和结束的位置" class="headerlink" title="[]字符开始和结束的位置"></a>[]字符开始和结束的位置</h4><h4 id="x-y-匹配x或y"><a href="#x-y-匹配x或y" class="headerlink" title="x|y 匹配x或y"></a>x|y 匹配x或y</h4><h4 id="xyz-匹配所包含的任意一个字符"><a href="#xyz-匹配所包含的任意一个字符" class="headerlink" title="[xyz]匹配所包含的任意一个字符"></a>[xyz]匹配所包含的任意一个字符</h4><h4 id="xyz-匹配未包含的任意字符"><a href="#xyz-匹配未包含的任意字符" class="headerlink" title="[^xyz]匹配未包含的任意字符"></a>[^xyz]匹配未包含的任意字符</h4><h4 id="a-z-字符范围，匹配指定范围内的任意字符"><a href="#a-z-字符范围，匹配指定范围内的任意字符" class="headerlink" title="[a-z]字符范围，匹配指定范围内的任意字符"></a>[a-z]字符范围，匹配指定范围内的任意字符</h4><h4 id="a-z-，负值字符范围，匹配任何不在指定范围内的任意字符"><a href="#a-z-，负值字符范围，匹配任何不在指定范围内的任意字符" class="headerlink" title="[^a-z]，负值字符范围，匹配任何不在指定范围内的任意字符"></a>[^a-z]，负值字符范围，匹配任何不在指定范围内的任意字符</h4><h4 id="cx匹配由x指明的控制字符，x的值必须为A-Z或a-z之一，否则c视为原义的‘c’字符"><a href="#cx匹配由x指明的控制字符，x的值必须为A-Z或a-z之一，否则c视为原义的‘c’字符" class="headerlink" title="\cx匹配由x指明的控制字符，x的值必须为A-Z或a-z之一，否则c视为原义的‘c’字符"></a>\cx匹配由x指明的控制字符，x的值必须为A-Z或a-z之一，否则c视为原义的‘c’字符</h4><h4 id="d匹配一个数字字符，等价于-0-9"><a href="#d匹配一个数字字符，等价于-0-9" class="headerlink" title="\d匹配一个数字字符，等价于[0-9]"></a>\d匹配一个数字字符，等价于[0-9]</h4><h4 id="D匹配一个非数字字符，等价于-0-9"><a href="#D匹配一个非数字字符，等价于-0-9" class="headerlink" title="\D匹配一个非数字字符，等价于[ ^0-9]"></a>\D匹配一个非数字字符，等价于[ ^0-9]</h4><h4 id="f匹配一个换页符，等价于-x0c和-cL"><a href="#f匹配一个换页符，等价于-x0c和-cL" class="headerlink" title="\f匹配一个换页符，等价于\x0c和\cL"></a>\f匹配一个换页符，等价于\x0c和\cL</h4><h4 id="n匹配一个换行符，等价于-x0a和-cJ"><a href="#n匹配一个换行符，等价于-x0a和-cJ" class="headerlink" title="\n匹配一个换行符，等价于\x0a和\cJ"></a>\n匹配一个换行符，等价于\x0a和\cJ</h4><h4 id="r匹配一个回车符，等价于-x0d和-cM"><a href="#r匹配一个回车符，等价于-x0d和-cM" class="headerlink" title="\r匹配一个回车符，等价于\x0d和\cM"></a>\r匹配一个回车符，等价于\x0d和\cM</h4><h4 id="s匹配任何空白字符，包括空格、制表符、换页符等等，等价于-f-n-r-t-v"><a href="#s匹配任何空白字符，包括空格、制表符、换页符等等，等价于-f-n-r-t-v" class="headerlink" title="\s匹配任何空白字符，包括空格、制表符、换页符等等，等价于[\f\n\r\t\v]"></a>\s匹配任何空白字符，包括空格、制表符、换页符等等，等价于[\f\n\r\t\v]</h4><h4 id="S匹配任何非空白字符，等价于-f-n-r-t-v"><a href="#S匹配任何非空白字符，等价于-f-n-r-t-v" class="headerlink" title="\S匹配任何非空白字符，等价于[ ^\f\n\r\t\v]"></a>\S匹配任何非空白字符，等价于[ ^\f\n\r\t\v]</h4><h4 id="t匹配一个制表符，等价于-x09和-cI"><a href="#t匹配一个制表符，等价于-x09和-cI" class="headerlink" title="\t匹配一个制表符，等价于\x09和\cI"></a>\t匹配一个制表符，等价于\x09和\cI</h4><h4 id="v匹配一个垂直制表符，等价于-x0b和-cK"><a href="#v匹配一个垂直制表符，等价于-x0b和-cK" class="headerlink" title="\v匹配一个垂直制表符，等价于\x0b和\cK"></a>\v匹配一个垂直制表符，等价于\x0b和\cK</h4><h4 id="w匹配包括下划线的任何单词字符，等价于-A-Za-z0-9"><a href="#w匹配包括下划线的任何单词字符，等价于-A-Za-z0-9" class="headerlink" title="\w匹配包括下划线的任何单词字符，等价于[A-Za-z0-9_]"></a>\w匹配包括下划线的任何单词字符，等价于[A-Za-z0-9_]</h4><h4 id="W匹配任何非单词字符，等价于-A-Za-z0-9"><a href="#W匹配任何非单词字符，等价于-A-Za-z0-9" class="headerlink" title="\W匹配任何非单词字符，等价于[ ^A-Za-z0-9_]"></a>\W匹配任何非单词字符，等价于[ ^A-Za-z0-9_]</h4><h4 id="xn匹配n，其中n为十六进制转义值"><a href="#xn匹配n，其中n为十六进制转义值" class="headerlink" title="\xn匹配n，其中n为十六进制转义值"></a>\xn匹配n，其中n为十六进制转义值</h4><h4 id="，满足左右两侧其中一种就应该当成匹配"><a href="#，满足左右两侧其中一种就应该当成匹配" class="headerlink" title="|，满足左右两侧其中一种就应该当成匹配"></a>|，满足左右两侧其中一种就应该当成匹配</h4><hr>
+<p>​          </p>
+<h4 id="后向引用"><a href="#后向引用" class="headerlink" title="后向引用"></a>后向引用</h4><pre><code>\b(\w+)\b\s+\1\b
+</code></pre><p>匹配重复的单词，像go go。这个表达式首先是一个单词，也就是单词开始处和结束处之间的多于一个的字母或数字(\b(\w+)\b)，这个单词会被捕获到编号为1的分组中，然后是1个或几个空白符(\s+)，最后是分组1中捕获的内容（也就是前面匹配的那个单词）(\1)。</p>
+<p>你也可以自己指定子表达式的组名。要指定一个子表达式的组名，请使用这样的语法：(?<word>\w+)(或者把尖括号换成’也行：(?’Word’\w+)),这样就把\w+的组名指定为Word了。要反向引用这个分组捕获的内容，你可以使用\k<word>,所以上一个例子也可以写成这样：\b(?<word>\w+)\b\s+\k<word>\b。</word></word></word></word></p>
+<blockquote>
+<p>使用小括号的时候，还有很多特定用途的语法。下面列出了最常用的一些：</p>
+</blockquote>
+<p><img src="/img/reg1.png" alt="reg1"></p>
+<blockquote>
+<p>​(?=exp)，断言自身出现的位置的后面能匹配表达式exp。比如\b\w+(?=ing\b)，匹配以ing结尾的单词的前面部分(除了ing以外的部分)，如查找I’m singing while you’re dancing.时，它会匹配sing和danc。        </p>
+<p>(?&lt;=exp)，断言自身出现的位置的前面能匹配表达式exp。比如(?&lt;=\bre)\w+\b会匹配以re开头的单词的后半部分(除了re以外的部分)，例如在查找reading a book时，它匹配ading。</p>
+<p>(?!exp)，断言此位置的后面不能匹配表达式exp。例如：\d{3}(?!\d)匹配三位数字，而且这三位数字的后面不能是数字</p>
+<p>(?&lt;!exp)，断言此位置的前面不能匹配表达式exp：(?&lt;![a-z])\d{7}匹配前面不是小写字母的七位数字。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;匹配前面的子表达式零次或一次&quot;&gt;&lt;a href=&quot;#匹配前面的子表达式零次或一次&quot; class=&quot;headerlink&quot; title=&quot;?匹配前面的子表达式零次或一次&quot;&gt;&lt;/a&gt;?匹配前面的子表达式零次或一次&lt;/h4&gt;&lt;p&gt;data?.dat&lt;/p&gt;
+&lt;h4 id
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>js全排列算法题</title>
+    <link href="http://july.life/2017/full-permutation/"/>
+    <id>http://july.life/2017/full-permutation/</id>
+    <published>2017-06-08T14:43:44.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="In-this-kata-you-have-to-create-all-permutations-of-an-input-string-and-remove-duplicates-if-present-This-means-you-have-to-shuffle-all-letters-from-the-input-in-all-possible-orders"><a href="#In-this-kata-you-have-to-create-all-permutations-of-an-input-string-and-remove-duplicates-if-present-This-means-you-have-to-shuffle-all-letters-from-the-input-in-all-possible-orders" class="headerlink" title="In this kata you have to create all permutations of an input string and remove duplicates, if present. This means, you have to shuffle all letters from the input in all possible orders."></a>In this kata you have to create all permutations of an input string and remove duplicates, if present. This means, you have to shuffle all letters from the input in all possible orders.</h4><h5 id="Examples"><a href="#Examples" class="headerlink" title="Examples:"></a>Examples:</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">permutations(<span class="string">'a'</span>); <span class="regexp">//</span> [<span class="string">'a'</span>]</div><div class="line">permutations(<span class="string">'ab'</span>); <span class="regexp">//</span> [<span class="string">'ab'</span>, <span class="string">'ba'</span>]</div><div class="line">permutations(<span class="string">'aabb'</span>); <span class="regexp">//</span> [<span class="string">'aabb'</span>, <span class="string">'abab'</span>, <span class="string">'abba'</span>, <span class="string">'baab'</span>, <span class="string">'baba'</span>, <span class="string">'bbaa'</span>]</div></pre></td></tr></table></figure>
+<p>​       </p>
+<h5 id="对于这种问题，都是采用插空的方法。所以基本思路也就这样了，每次选一个字符，在剩余字符串中进行插空"><a href="#对于这种问题，都是采用插空的方法。所以基本思路也就这样了，每次选一个字符，在剩余字符串中进行插空" class="headerlink" title="对于这种问题，都是采用插空的方法。所以基本思路也就这样了，每次选一个字符，在剩余字符串中进行插空"></a>对于这种问题，都是采用插空的方法。所以基本思路也就这样了，每次选一个字符，在剩余字符串中进行插空</h5><blockquote>
+<p>对于这种问题，都是采用插空的方法。所以基本思路也就这样了，每次选一个字符，在剩余字符串中进行插空</p>
+</blockquote>
+<p>​          </p>
+<h5 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h5><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function permutations(<span class="built_in">string</span>) &#123;</div><div class="line">  <span class="keyword">return</span> (<span class="built_in">string</span>.length == <span class="number">1</span>) ? [<span class="built_in">string</span>] : <span class="built_in">string</span>.split(<span class="string">''</span>).map(</div><div class="line">     (e, i) =&gt; permutations(<span class="built_in">string</span>.slice(<span class="number">0</span>,i) + <span class="built_in">string</span>.slice(i+<span class="number">1</span>)).map(<span class="function"><span class="params">(e2)</span> =&gt;</span> e+e2)</div><div class="line">  ).reduce(<span class="function"><span class="params">(r,e)</span> =&gt;</span> r.concat(e)).sort().filter(<span class="function"><span class="params">(e,i,a)</span> =&gt;</span> (i==<span class="number">0</span>) || a[i<span class="number">-1</span>] != e);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​          </p>
+<h5 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h5><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Test </span>Results:</div><div class="line"> permutations</div><div class="line"> examples from description</div><div class="line"><span class="keyword">Test </span>Passed: Value == '[\'a\']'</div><div class="line"><span class="keyword">Test </span>Passed: Value == '[\'ab\', \'ba\']'</div><div class="line"><span class="keyword">Test </span>Passed: Value == '[\'aabb\', \'abab\', \'abba\', \'baab\', \'baba\', \'bbaa\']'</div><div class="line">Completed in 4ms</div><div class="line">Completed in 8ms</div><div class="line">You have passed all of the tests! :)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;In-this-kata-you-have-to-create-all-permutations-of-an-input-string-and-remove-duplicates-if-present-This-means-you-have-to-shuffle-
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>js精度溢出</title>
+    <link href="http://july.life/2017/precision/"/>
+    <id>http://july.life/2017/precision/</id>
+    <published>2017-06-08T14:19:00.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Given-the-string-representations-of-two-integers-return-the-string-representation-of-the-sum-of-those-integers"><a href="#Given-the-string-representations-of-two-integers-return-the-string-representation-of-the-sum-of-those-integers" class="headerlink" title="Given the string representations of two integers, return the string representation of the sum of those integers."></a>Given the string representations of two integers, return the string representation of the sum of those integers.</h4><p>For example:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">sumStrings</span><span class="params">(<span class="string">'1'</span>,<span class="string">'2'</span>)</span></span> <span class="comment">// =&gt; '3'</span></div></pre></td></tr></table></figure>
+<p>A string representation of an integer will contain no characters besides the ten numerals “0” to “9”.</p>
+<p>​          </p>
+<h5 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h5><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">function</span> sumStrings(a, b) &#123;</div><div class="line">  <span class="attribute">var</span> res = <span class="string">''</span>, c = <span class="number">0</span>;</div><div class="line">  <span class="attribute">a</span> = a.split(<span class="string">''</span>);</div><div class="line">  <span class="attribute">b</span> = b.split(<span class="string">''</span>);</div><div class="line">  <span class="attribute">while</span> (a.length || b.length || c) &#123;</div><div class="line">    <span class="attribute">c</span> += ~~a.pop() + ~~b.pop();</div><div class="line">    <span class="attribute">res</span> = c % <span class="number">10</span> + res;</div><div class="line">    <span class="attribute">c</span> = c &gt; <span class="number">9</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="attribute">return</span> res.replace(/^<span class="number">0</span>+/, <span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​          </p>
+<h5 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.prototype.reverse = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumStrings</span>(<span class="params">a,b</span>) </span>&#123;</div><div class="line">  a = a.reverse(); b = b.reverse();</div><div class="line">  <span class="keyword">var</span> carry = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> index = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> sumDigits = [];</div><div class="line">  <span class="keyword">while</span> (index &lt; a.length || index &lt; b.length || carry != <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">var</span> aDigit = index &lt; a.length ? <span class="built_in">parseInt</span>(a[index]) : <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> bDigit = index &lt; b.length ? <span class="built_in">parseInt</span>(b[index]) : <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> digitSum = aDigit + bDigit + carry;</div><div class="line">    sumDigits.push((digitSum % <span class="number">10</span>).toString());</div><div class="line">    carry = <span class="built_in">Math</span>.floor(digitSum / <span class="number">10</span>);</div><div class="line">    index++;</div><div class="line">  &#125;</div><div class="line">  sumDigits.reverse();</div><div class="line">  <span class="keyword">while</span> (sumDigits[<span class="number">0</span>] == <span class="string">'0'</span>) sumDigits.shift();</div><div class="line">  <span class="keyword">return</span> sumDigits.join(<span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​          </p>
+<p>测试结果：</p>
+<p><img src="/img/precision.png" alt="precision"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Given-the-string-representations-of-two-integers-return-the-string-representation-of-the-sum-of-those-integers&quot;&gt;&lt;a href=&quot;#Given-the-
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>内网配置Teamviewer实现mac局域网远程PC桌面</title>
+    <link href="http://july.life/2017/teamviewer/"/>
+    <id>http://july.life/2017/teamviewer/</id>
+    <published>2017-06-06T10:52:19.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>用到TeamViewer，源于最近刚入职一家整天强调信息安全的某国企，然后内部使用的基础类工具（自研），都不支持mac系统，还不允许装双系统。所以配备的台式机仅用于基础类工具，开发仍使用mac笔记本。</p>
+<p>当然，不要在意那么多细节，下面进入正题。。</p>
+<hr>
+<h3 id="首先，因局域网是内网，需要配置代理才能使用TeamViewer，下面讲一下如何给mac配置网络代理。"><a href="#首先，因局域网是内网，需要配置代理才能使用TeamViewer，下面讲一下如何给mac配置网络代理。" class="headerlink" title="首先，因局域网是内网，需要配置代理才能使用TeamViewer，下面讲一下如何给mac配置网络代理。"></a>首先，因局域网是内网，需要配置代理才能使用TeamViewer，下面讲一下如何给mac配置网络代理。</h3><h4 id="1-打开“网络偏好设置”，选中已连接的网络。"><a href="#1-打开“网络偏好设置”，选中已连接的网络。" class="headerlink" title="1. 打开“网络偏好设置”，选中已连接的网络。"></a>1. 打开“网络偏好设置”，选中已连接的网络。</h4><p><img src="/img/proxy1.png" alt="proxy1"></p>
+<p>​    </p>
+<h4 id="2-点击“高级”，选中“代理”，去掉默认的“自动代理配置”，勾选“网页代理-HTTP-”和“安全网页代理-HTTPS-”，配置代理服务器。点击“好”。"><a href="#2-点击“高级”，选中“代理”，去掉默认的“自动代理配置”，勾选“网页代理-HTTP-”和“安全网页代理-HTTPS-”，配置代理服务器。点击“好”。" class="headerlink" title="2. 点击“高级”，选中“代理”，去掉默认的“自动代理配置”，勾选“网页代理(HTTP)”和“安全网页代理(HTTPS)”，配置代理服务器。点击“好”。"></a>2. 点击“高级”，选中“代理”，去掉默认的“自动代理配置”，勾选“网页代理(HTTP)”和“安全网页代理(HTTPS)”，配置代理服务器。点击“好”。</h4><p><img src="/img/proxy2.png" alt="proxy2"></p>
+<p>​         </p>
+<h4 id="3-选择“DNS”，删除所有DNS，点击“好”。"><a href="#3-选择“DNS”，删除所有DNS，点击“好”。" class="headerlink" title="3. 选择“DNS”，删除所有DNS，点击“好”。"></a>3. 选择“DNS”，删除所有DNS，点击“好”。</h4><h5 id=""><a href="#" class="headerlink" title=""></a><img src="/img/proxy3.png" alt="proxy3"></h5><p>​         </p>
+<h4 id="4-最后点击“应用”。"><a href="#4-最后点击“应用”。" class="headerlink" title="4. 最后点击“应用”。"></a>4. 最后点击“应用”。</h4><hr>
+<h3 id="下面是如何配置TeamViewer实现远程控制"><a href="#下面是如何配置TeamViewer实现远程控制" class="headerlink" title="下面是如何配置TeamViewer实现远程控制"></a>下面是如何配置TeamViewer实现远程控制</h3><h4 id="1-为了防止PC会自动获取IP，所以需要给远程共享的PC配置固定IP，共享的PC和本地笔记本必须在同一网段上。"><a href="#1-为了防止PC会自动获取IP，所以需要给远程共享的PC配置固定IP，共享的PC和本地笔记本必须在同一网段上。" class="headerlink" title="1. 为了防止PC会自动获取IP，所以需要给远程共享的PC配置固定IP，共享的PC和本地笔记本必须在同一网段上。"></a>1. 为了防止PC会自动获取IP，所以需要给远程共享的PC配置固定IP，共享的PC和本地笔记本必须在同一网段上。</h4><p><img src="/img/teamviewer1.jpg" alt="teamviewer1"></p>
+<h4 id="2-PC上服务站配置，点击“设置无人值守访问…”"><a href="#2-PC上服务站配置，点击“设置无人值守访问…”" class="headerlink" title="2. PC上服务站配置，点击“设置无人值守访问…”"></a>2. PC上服务站配置，点击“设置无人值守访问…”</h4><p><img src="/img/teamviewer2.jpg" alt="teamviewer2"></p>
+<p>​       </p>
+<h4 id="3-点击下一步"><a href="#3-点击下一步" class="headerlink" title="3. 点击下一步"></a>3. 点击下一步</h4><p><img src="/img/teamviewer3.jpg" alt="teamviewer3"></p>
+<p>​       </p>
+<h4 id="4-定义个人密码"><a href="#4-定义个人密码" class="headerlink" title="4. 定义个人密码"></a>4. 定义个人密码</h4><p><img src="/img/teamviewer4.jpg" alt="teamviewer4"></p>
+<p>​       </p>
+<h4 id="5-点击“应用”"><a href="#5-点击“应用”" class="headerlink" title="5. 点击“应用”"></a>5. 点击“应用”</h4><p><img src="/img/teamviewer5.jpg" alt="teamviewer5"></p>
+<p>​       </p>
+<h4 id="6-选择“我不想创建TeamViewer帐户”"><a href="#6-选择“我不想创建TeamViewer帐户”" class="headerlink" title="6. 选择“我不想创建TeamViewer帐户”"></a>6. 选择“我不想创建TeamViewer帐户”</h4><p><img src="/img/teamviewer6.jpg" alt="teamviewer6"></p>
+<p>​       </p>
+<h4 id="7-选择“其他”-gt-”选项”"><a href="#7-选择“其他”-gt-”选项”" class="headerlink" title="7. 选择“其他”-&gt;”选项”"></a>7. 选择“其他”-&gt;”选项”</h4><p><img src="/img/teamviewer7.jpg" alt="teamviewer7"></p>
+<p>​       </p>
+<h4 id="8-在“常规”里，选择“随Windows一同启动TeamViewer”；“呼入的lan连接”选择“接受”"><a href="#8-在“常规”里，选择“随Windows一同启动TeamViewer”；“呼入的lan连接”选择“接受”" class="headerlink" title="8. 在“常规”里，选择“随Windows一同启动TeamViewer”；“呼入的lan连接”选择“接受”"></a>8. 在“常规”里，选择“随Windows一同启动TeamViewer”；“呼入的lan连接”选择“接受”</h4><p><img src="/img/teamviewer8.jpg" alt="teamviewer8"></p>
+<p>​      </p>
+<h4 id="9-在“安全性”里，“Windows登录”选择“允许所有用户”，然后点击“确定”"><a href="#9-在“安全性”里，“Windows登录”选择“允许所有用户”，然后点击“确定”" class="headerlink" title="9. 在“安全性”里，“Windows登录”选择“允许所有用户”，然后点击“确定”"></a>9. 在“安全性”里，“Windows登录”选择“允许所有用户”，然后点击“确定”</h4><p><img src="/img/teamviewer9.jpg" alt="teamviewer9"></p>
+<p>​      </p>
+<h4 id="10-本地mac配置"><a href="#10-本地mac配置" class="headerlink" title="10. 本地mac配置"></a>10. 本地mac配置</h4><p><img src="/img/teamviewer10.jpg" alt="teamviewer10"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用到TeamViewer，源于最近刚入职一家整天强调信息安全的某国企，然后内部使用的基础类工具（自研），都不支持mac系统，还不允许装双系统。所以配备的台式机仅用于基础类工具，开发仍使用mac笔记本。&lt;/p&gt;
+&lt;p&gt;当然，不要在意那么多细节，下面进入正题。。&lt;/p&gt;
+&lt;hr
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo安装插件</title>
+    <link href="http://july.life/2016/hexo-plugins/"/>
+    <id>http://july.life/2016/hexo-plugins/</id>
+    <published>2016-01-20T10:48:27.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="sitemap插件"><a href="#sitemap插件" class="headerlink" title="sitemap插件"></a>sitemap插件</h2><ol>
+<li>可以将你站点地图提交给搜索引擎，文件路径public/sitemap.xml；</li>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> cnpm install hexo-generator-sitemap --save</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>启用，修改Hexo/_config.yml，增加以下内容</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Extensions</span></div><div class="line"><span class="symbol">Plugins:</span></div><div class="line">- hexo-generator-sitemap</div><div class="line"><span class="meta">#sitemap</span></div><div class="line"><span class="symbol">sitemap:</span></div><div class="line"><span class="symbol">  path:</span> sitemap.xml</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用方法<br>(1) 访问 <a href="http://localhost:4000/sitemap.xml，即可看到站点地图。" target="_blank" rel="external">http://localhost:4000/sitemap.xml，即可看到站点地图。</a><br>(2) 将它显示在页面中<br> 修改themes/landscape下的_config.yml，在menu节点下添加下面的内容：</p>
+ <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">menu:</span></div><div class="line"><span class="symbol">Home:</span> /</div><div class="line"><span class="symbol">Archives:</span> /archives</div><div class="line"><span class="symbol">Rss:</span> /atom.xml</div><div class="line"><span class="symbol">Sitemap:</span> /sitemap.xml</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="feed插件"><a href="#feed插件" class="headerlink" title="feed插件"></a>feed插件</h2><ol>
+<li>Rss的生成插件，你可以在配置显示你站点的Rss，文件路径public/atom.xml；</li>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> cnpm install hexo-generator-feed --save</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>启用，修改Hexo/_config.yml，增加以下内容</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Extensions</span></div><div class="line"><span class="symbol">Plugins:</span></div><div class="line">- hexo-generator-feed</div><div class="line">- hexo-generator-sitemap</div><div class="line"><span class="meta">#Feed Atom</span></div><div class="line"><span class="symbol">feed:</span></div><div class="line"><span class="symbol">  type:</span> atom</div><div class="line"><span class="symbol">  path:</span> atom.xml</div><div class="line"><span class="symbol">  limit:</span> <span class="number">20</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>使用方法参加sitemap插件部分。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;sitemap插件&quot;&gt;&lt;a href=&quot;#sitemap插件&quot; class=&quot;headerlink&quot; title=&quot;sitemap插件&quot;&gt;&lt;/a&gt;sitemap插件&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;可以将你站点地图提交给搜索引擎，文件路径public/sitemap.x
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>landscape主题添加多说评论框</title>
+    <link href="http://july.life/2016/duoshuo/"/>
+    <id>http://july.life/2016/duoshuo/</id>
+    <published>2016-01-20T10:33:12.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>登录多说，点击工具，获得如下代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 多说评论框 start --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ds-thread"</span> <span class="attr">data-thread-key</span>=<span class="string">"请将此处替换成文章在你的站点中的ID"</span> <span class="attr">data-title</span>=<span class="string">"请替换成文章的标题"</span> <span class="attr">data-url</span>=<span class="string">"请替换成文章的网址"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说评论框 end --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="actionscript"><span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">"labnize"</span>&#125;;</span></div><div class="line"><span class="actionscript">	(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span></div><div class="line"><span class="javascript">		<span class="keyword">var</span> ds = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span></div><div class="line"><span class="actionscript">		ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;</span></div><div class="line"><span class="javascript">		ds.src = (<span class="built_in">document</span>.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</span></div><div class="line"><span class="actionscript">		ds.charset = <span class="string">'UTF-8'</span>;</span></div><div class="line"><span class="javascript">		(<span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] </span></div><div class="line"><span class="javascript">		 || <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);</span></div><div class="line"><span class="undefined">	&#125;)();</span></div><div class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></div></pre></td></tr></table></figure>
+<p>将landscape/layout/_partial/article.ejs中底部评论框替换为：<br><figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="perl"> <span class="keyword">if</span> (!<span class="keyword">index</span> &amp;&amp; post.comments)&#123; </span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">"comments"</span>&gt;</span></span></div><div class="line"><span class="xml">  <span class="comment">&lt;!-- 多说评论框 start --&gt;</span></span></div><div class="line"><span class="xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ds-thread"</span> <span class="attr">data-thread-key</span>=<span class="string">"&lt;%=</span></span></span><span class="perl"> post.path</span><span class="xml"><span class="tag"><span class="string">%&gt;"</span> <span class="attr">data-title</span>=<span class="string">"&lt;%=</span></span></span><span class="perl"> post.title </span><span class="xml"><span class="tag"><span class="string">%&gt;"</span> <span class="attr">data-url</span>=<span class="string">"&lt;%</span></span></span><span class="perl">-url_for(post.path)</span><span class="xml"><span class="tag"><span class="string">%&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="comment">&lt;!-- 多说评论框 end --&gt;</span></span></div><div class="line"><span class="xml"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span></div><div class="line"><span class="xml">var duoshuoQuery = &#123;short_name:"labnize"&#125;;</span></div><div class="line"><span class="xml">  (function() &#123;</span></div><div class="line"><span class="xml">    var ds = document.createElement('script');</span></div><div class="line"><span class="xml">    ds.type = 'text/javascript';ds.async = true;</span></div><div class="line"><span class="xml">    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';</span></div><div class="line"><span class="xml">    ds.charset = 'UTF-8';</span></div><div class="line"><span class="xml">    (document.getElementsByTagName('head')[0] </span></div><div class="line"><span class="xml">     || document.getElementsByTagName('body')[0]).appendChild(ds);</span></div><div class="line"><span class="xml">  &#125;)();</span></div><div class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="perl"> &#125; </span><span class="xml"><span class="tag">%&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>重新生成页面后，即可看到底部的评论框。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;登录多说，点击工具，获得如下代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>萌萌哒</title>
+    <link href="http://july.life/2016/second/"/>
+    <id>http://july.life/2016/second/</id>
+    <published>2016-01-13T16:44:49.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>要不要这样可怜兮兮。。<br><img src="/img/dog.jpeg" alt="dog"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;要不要这样可怜兮兮。。&lt;br&gt;&lt;img src=&quot;/img/dog.jpeg&quot; alt=&quot;dog&quot;&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://july.life/2016/hello-world/"/>
+    <id>http://july.life/2016/hello-world/</id>
+    <published>2016-01-02T16:11:34.000Z</published>
+    <updated>2017-09-05T08:40:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

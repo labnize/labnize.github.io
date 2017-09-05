@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>正则表达式 | July&#39;s Life</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="July's Life">
+    <meta name="author" content="July.Zhu">
+    <meta name="description" content="July Zhu" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="July&#39;s Life" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Crabxlab</a></li>
+                    
+                        <li><a href="http://www.asiainfo.com.cn/" target="_BLANK" class="animsition-link">AsiaInfo</a></li>
+                    
+                        <li><a href="http://www.zte.com.cn/" target="_BLANK" class="animsition-link">ZTE</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="https://github.com/labnize/" class="animsition-link">July&#39;s github</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <!--<li><a href="/about.html" class="animsition-link" title="about">About</a></li>-->
+            <li><a href="http://resume.july.life/" class="animsition-link" title="about">About Me</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">July's Life</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/labnize/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!-- ============================ Hero Image =========================== -->
+
+        <section id="hero" class="scrollme">
+            <div class="container-fluid element-img" style="background: url(/img/banner3.jpg) no-repeat center center fixed;background-size: cover">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                        <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                            <div>
+                            	
+                                <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                                <p></p>
+				    			
+                                <h2></h2>
+                                <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+				    			
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // .col-md-12 -->
+                </div>
+                <div class="herofade beige-dk"></div>
+            </div>
+        </section>
+
+        <!-- Height spacing helper -->
+        <div class="heightblock"></div>
+        <!-- // End height spacing helper -->
+
+        <!-- ============================ END Hero Image =========================== -->
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-06-14T14:40:44.000Z" itemprop="datePublished">
+          2017-06-14
+      </time>
+    
+</span>
+                <h1>正则表达式</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h4 id="匹配前面的子表达式零次或一次"><a href="#匹配前面的子表达式零次或一次" class="headerlink" title="?匹配前面的子表达式零次或一次"></a>?匹配前面的子表达式零次或一次</h4><p>data?.dat</p>
+<h4 id="匹配前面的子表达式零次或多次"><a href="#匹配前面的子表达式零次或多次" class="headerlink" title="*匹配前面的子表达式零次或多次"></a>*匹配前面的子表达式零次或多次</h4><p>data*.dat</p>
+<h4 id="匹配前面子表达式一次或多次"><a href="#匹配前面子表达式一次或多次" class="headerlink" title="+匹配前面子表达式一次或多次"></a>+匹配前面子表达式一次或多次</h4><pre><code>^[0-9]+abc$
+</code></pre><ul>
+<li>^为匹配输入字符串的开始位置</li>
+<li>[0-9]+匹配多个数字，[0-9]匹配单个数字，+匹配一个或者多个</li>
+<li>abc$匹配字母abc并以abc结尾，$为匹配输入字符串的结束位置。</li>
+</ul>
+<hr>
+<h4 id="n-匹配确定的n次"><a href="#n-匹配确定的n次" class="headerlink" title="{n}匹配确定的n次"></a>{n}匹配确定的n次</h4><p>o{2}不能匹配Bob，但能匹配food         </p>
+<h4 id="o-n-至少匹配n次"><a href="#o-n-至少匹配n次" class="headerlink" title="o{n,}至少匹配n次"></a>o{n,}至少匹配n次</h4><p>o{2,} 不能匹配Bob，但能匹配fooood</p>
+<h4 id="n-m-最少匹配n次且最多匹配m次，注意在逗号和两个数之间不能有空格。"><a href="#n-m-最少匹配n次且最多匹配m次，注意在逗号和两个数之间不能有空格。" class="headerlink" title="{n,m}最少匹配n次且最多匹配m次，注意在逗号和两个数之间不能有空格。"></a>{n,m}最少匹配n次且最多匹配m次，注意在逗号和两个数之间不能有空格。</h4><h4 id="在-、-或？限定符之后放置？，该表达式从‘贪心’表达式转换为‘非贪心’表达式或者最小匹配。"><a href="#在-、-或？限定符之后放置？，该表达式从‘贪心’表达式转换为‘非贪心’表达式或者最小匹配。" class="headerlink" title="在*、+或？限定符之后放置？，该表达式从‘贪心’表达式转换为‘非贪心’表达式或者最小匹配。"></a>在*、+或？限定符之后放置？，该表达式从‘贪心’表达式转换为‘非贪心’表达式或者最小匹配。</h4><p>​        </p>
+<h4 id="匹配字符串的结尾位置"><a href="#匹配字符串的结尾位置" class="headerlink" title="$匹配字符串的结尾位置"></a>$匹配字符串的结尾位置</h4><h4 id="匹配字符串的开始位置"><a href="#匹配字符串的开始位置" class="headerlink" title="^匹配字符串的开始位置"></a>^匹配字符串的开始位置</h4><h4 id="b匹配一个字边界"><a href="#b匹配一个字边界" class="headerlink" title="\b匹配一个字边界"></a>\b匹配一个字边界</h4><pre><code>/\bCha/
+</code></pre><p>匹配以Cha开头的字符</p>
+<hr>
+<h4 id="B匹配非字边界"><a href="#B匹配非字边界" class="headerlink" title="\B匹配非字边界"></a>\B匹配非字边界</h4><pre><code>/\Bapt/
+</code></pre><p>匹配字符串中apt</p>
+<hr>
+<h4 id="匹配出换行符-n之外的任何单字符"><a href="#匹配出换行符-n之外的任何单字符" class="headerlink" title=".匹配出换行符\n之外的任何单字符"></a>.匹配出换行符\n之外的任何单字符</h4><h4 id="将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符"><a href="#将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符" class="headerlink" title="\将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符"></a>\将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符</h4><h4 id="字符开始和结束的位置"><a href="#字符开始和结束的位置" class="headerlink" title="[]字符开始和结束的位置"></a>[]字符开始和结束的位置</h4><h4 id="x-y-匹配x或y"><a href="#x-y-匹配x或y" class="headerlink" title="x|y 匹配x或y"></a>x|y 匹配x或y</h4><h4 id="xyz-匹配所包含的任意一个字符"><a href="#xyz-匹配所包含的任意一个字符" class="headerlink" title="[xyz]匹配所包含的任意一个字符"></a>[xyz]匹配所包含的任意一个字符</h4><h4 id="xyz-匹配未包含的任意字符"><a href="#xyz-匹配未包含的任意字符" class="headerlink" title="[^xyz]匹配未包含的任意字符"></a>[^xyz]匹配未包含的任意字符</h4><h4 id="a-z-字符范围，匹配指定范围内的任意字符"><a href="#a-z-字符范围，匹配指定范围内的任意字符" class="headerlink" title="[a-z]字符范围，匹配指定范围内的任意字符"></a>[a-z]字符范围，匹配指定范围内的任意字符</h4><h4 id="a-z-，负值字符范围，匹配任何不在指定范围内的任意字符"><a href="#a-z-，负值字符范围，匹配任何不在指定范围内的任意字符" class="headerlink" title="[^a-z]，负值字符范围，匹配任何不在指定范围内的任意字符"></a>[^a-z]，负值字符范围，匹配任何不在指定范围内的任意字符</h4><h4 id="cx匹配由x指明的控制字符，x的值必须为A-Z或a-z之一，否则c视为原义的‘c’字符"><a href="#cx匹配由x指明的控制字符，x的值必须为A-Z或a-z之一，否则c视为原义的‘c’字符" class="headerlink" title="\cx匹配由x指明的控制字符，x的值必须为A-Z或a-z之一，否则c视为原义的‘c’字符"></a>\cx匹配由x指明的控制字符，x的值必须为A-Z或a-z之一，否则c视为原义的‘c’字符</h4><h4 id="d匹配一个数字字符，等价于-0-9"><a href="#d匹配一个数字字符，等价于-0-9" class="headerlink" title="\d匹配一个数字字符，等价于[0-9]"></a>\d匹配一个数字字符，等价于[0-9]</h4><h4 id="D匹配一个非数字字符，等价于-0-9"><a href="#D匹配一个非数字字符，等价于-0-9" class="headerlink" title="\D匹配一个非数字字符，等价于[ ^0-9]"></a>\D匹配一个非数字字符，等价于[ ^0-9]</h4><h4 id="f匹配一个换页符，等价于-x0c和-cL"><a href="#f匹配一个换页符，等价于-x0c和-cL" class="headerlink" title="\f匹配一个换页符，等价于\x0c和\cL"></a>\f匹配一个换页符，等价于\x0c和\cL</h4><h4 id="n匹配一个换行符，等价于-x0a和-cJ"><a href="#n匹配一个换行符，等价于-x0a和-cJ" class="headerlink" title="\n匹配一个换行符，等价于\x0a和\cJ"></a>\n匹配一个换行符，等价于\x0a和\cJ</h4><h4 id="r匹配一个回车符，等价于-x0d和-cM"><a href="#r匹配一个回车符，等价于-x0d和-cM" class="headerlink" title="\r匹配一个回车符，等价于\x0d和\cM"></a>\r匹配一个回车符，等价于\x0d和\cM</h4><h4 id="s匹配任何空白字符，包括空格、制表符、换页符等等，等价于-f-n-r-t-v"><a href="#s匹配任何空白字符，包括空格、制表符、换页符等等，等价于-f-n-r-t-v" class="headerlink" title="\s匹配任何空白字符，包括空格、制表符、换页符等等，等价于[\f\n\r\t\v]"></a>\s匹配任何空白字符，包括空格、制表符、换页符等等，等价于[\f\n\r\t\v]</h4><h4 id="S匹配任何非空白字符，等价于-f-n-r-t-v"><a href="#S匹配任何非空白字符，等价于-f-n-r-t-v" class="headerlink" title="\S匹配任何非空白字符，等价于[ ^\f\n\r\t\v]"></a>\S匹配任何非空白字符，等价于[ ^\f\n\r\t\v]</h4><h4 id="t匹配一个制表符，等价于-x09和-cI"><a href="#t匹配一个制表符，等价于-x09和-cI" class="headerlink" title="\t匹配一个制表符，等价于\x09和\cI"></a>\t匹配一个制表符，等价于\x09和\cI</h4><h4 id="v匹配一个垂直制表符，等价于-x0b和-cK"><a href="#v匹配一个垂直制表符，等价于-x0b和-cK" class="headerlink" title="\v匹配一个垂直制表符，等价于\x0b和\cK"></a>\v匹配一个垂直制表符，等价于\x0b和\cK</h4><h4 id="w匹配包括下划线的任何单词字符，等价于-A-Za-z0-9"><a href="#w匹配包括下划线的任何单词字符，等价于-A-Za-z0-9" class="headerlink" title="\w匹配包括下划线的任何单词字符，等价于[A-Za-z0-9_]"></a>\w匹配包括下划线的任何单词字符，等价于[A-Za-z0-9_]</h4><h4 id="W匹配任何非单词字符，等价于-A-Za-z0-9"><a href="#W匹配任何非单词字符，等价于-A-Za-z0-9" class="headerlink" title="\W匹配任何非单词字符，等价于[ ^A-Za-z0-9_]"></a>\W匹配任何非单词字符，等价于[ ^A-Za-z0-9_]</h4><h4 id="xn匹配n，其中n为十六进制转义值"><a href="#xn匹配n，其中n为十六进制转义值" class="headerlink" title="\xn匹配n，其中n为十六进制转义值"></a>\xn匹配n，其中n为十六进制转义值</h4><h4 id="，满足左右两侧其中一种就应该当成匹配"><a href="#，满足左右两侧其中一种就应该当成匹配" class="headerlink" title="|，满足左右两侧其中一种就应该当成匹配"></a>|，满足左右两侧其中一种就应该当成匹配</h4><hr>
+<p>​          </p>
+<h4 id="后向引用"><a href="#后向引用" class="headerlink" title="后向引用"></a>后向引用</h4><pre><code>\b(\w+)\b\s+\1\b
+</code></pre><p>匹配重复的单词，像go go。这个表达式首先是一个单词，也就是单词开始处和结束处之间的多于一个的字母或数字(\b(\w+)\b)，这个单词会被捕获到编号为1的分组中，然后是1个或几个空白符(\s+)，最后是分组1中捕获的内容（也就是前面匹配的那个单词）(\1)。</p>
+<p>你也可以自己指定子表达式的组名。要指定一个子表达式的组名，请使用这样的语法：(?<word>\w+)(或者把尖括号换成’也行：(?’Word’\w+)),这样就把\w+的组名指定为Word了。要反向引用这个分组捕获的内容，你可以使用\k<word>,所以上一个例子也可以写成这样：\b(?<word>\w+)\b\s+\k<word>\b。</word></word></word></word></p>
+<blockquote>
+<p>使用小括号的时候，还有很多特定用途的语法。下面列出了最常用的一些：</p>
+</blockquote>
+<p><img src="/img/reg1.png" alt="reg1"></p>
+<blockquote>
+<p>​(?=exp)，断言自身出现的位置的后面能匹配表达式exp。比如\b\w+(?=ing\b)，匹配以ing结尾的单词的前面部分(除了ing以外的部分)，如查找I’m singing while you’re dancing.时，它会匹配sing和danc。        </p>
+<p>(?&lt;=exp)，断言自身出现的位置的前面能匹配表达式exp。比如(?&lt;=\bre)\w+\b会匹配以re开头的单词的后半部分(除了re以外的部分)，例如在查找reading a book时，它匹配ading。</p>
+<p>(?!exp)，断言此位置的后面不能匹配表达式exp。例如：\d{3}(?!\d)匹配三位数字，而且这三位数字的后面不能是数字</p>
+<p>(?&lt;!exp)，断言此位置的前面不能匹配表达式exp：(?&lt;![a-z])\d{7}匹配前面不是小写字母的七位数字。</p>
+</blockquote>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/github-pages/" style="float: left;">
+        ← Configuring a publishing source for GitHub Pages
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/full-permutation/">
+        js全排列算法题 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2017/regexp/" data-title="正则表达式" data-url="http://july.life/2017/regexp/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"labnize"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By July.Zhu. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//july.life" style="color: #767D84">July</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/labnize/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
