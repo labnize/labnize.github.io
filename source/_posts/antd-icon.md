@@ -26,7 +26,7 @@ ___
 
 ```
 {
-        test: /\.(woff|woff2|eot|ttf)$/,
+        test: /\.(woff|woff2|eot|ttf|svg)$/,
         use: ['url-loader?limit=1&name=iconfont/[name].[hash:8].[ext]']
 }
 ```
